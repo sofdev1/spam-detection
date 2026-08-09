@@ -1,0 +1,9 @@
+columns:
+  - Label: string
+  - Message: string
+
+text_column: Message
+label_column: Label
+valid_labels:
+  - ham
+  - spam

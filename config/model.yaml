@@ -1,0 +1,38 @@
+# Model candidates + grid search params for src/components/model_trainer.py
+# (same structure as the provided train_and_export.py script, so that
+# script can also be pointed at this file directly if you prefer to
+# run it standalone.)
+
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 3
+    verbose: 1
+
+model_selection:
+  module_0:
+    class: MultinomialNB
+    module: sklearn.naive_bayes
+    search_param_grid:
+      alpha: [0.1, 0.5, 1.0]
+
+  module_1:
+    class: LogisticRegression
+    module: sklearn.linear_model
+    search_param_grid:
+      C: [0.1, 1.0, 10.0]
+      max_iter: [1000]
+
+  module_2:
+    class: RandomForestClassifier
+    module: sklearn.ensemble
+    search_param_grid:
+      n_estimators: [100, 200]
+      max_depth: [null, 20]
+
+  module_3:
+    class: LinearSVC
+    module: sklearn.svm
+    search_param_grid:
+      C: [0.1, 1.0, 10.0]

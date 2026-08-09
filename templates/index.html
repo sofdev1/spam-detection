@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spam Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">📩 Spam Message Detector</h1>
+        <p class="subtitle">Paste an SMS or email message below to check if it's spam.</p>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="flash">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <form action="{{ url_for('predict') }}" method="post" class="predict-form">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6"
+                placeholder="e.g. Congratulations! You've won a $1000 gift card. Click here to claim now!"
+                required></textarea>
+            <button type="submit">Check Message</button>
+        </form>
+
+        <p class="hint">
+            No trained model yet? Hit <a href="{{ url_for('train_route') }}">/train</a> first
+            to run the full pipeline (data ingestion &rarr; validation &rarr; transformation
+            &rarr; model training &rarr; model pusher).
+        </p>
+
+        <footer>
+            <p>Built with Flask, scikit-learn &amp; NLTK — PW Skills Project</p>
+        </footer>
+    </div>
+</body>
+</html>

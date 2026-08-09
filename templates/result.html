@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="result-body">
+    <div class="result-card {{ 'spam' if result.label == 'spam' else 'ham' }}">
+        {% if result.label == "spam" %}
+            <h2>🚫 This looks like SPAM</h2>
+        {% else %}
+            <h2>✅ This looks like a legitimate message</h2>
+        {% endif %}
+
+        <p class="original-message">"{{ message }}"</p>
+
+        {% if result.confidence is not none %}
+        <p class="confidence">Confidence: {{ (result.confidence * 100) | round(1) }}%</p>
+        {% endif %}
+
+        <a class="back-link" href="{{ url_for('index') }}">&larr; Check another message</a>
+    </div>
+</body>
+</html>

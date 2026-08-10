@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 22,
+  "agentName": "spam-detection",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus9.actions.githubusercontent.com/JWYXvbMT4mynfL0m0ygPDTh9CRwN7t3bjTF1XiT1zuQwHZWTaH/",
+  "gitHubUrl": "https://github.com/sofdev1/spam-detection",
+  "workFolder": "Spam Detection Project",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}

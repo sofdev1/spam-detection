@@ -14,8 +14,9 @@ artifacts/
 saved_models/*
 !saved_models/.gitkeep
 
-# Large raw datasets - keep out of git history, document how to get them instead
+# Large raw datasets - keep out of git history, except the small bundled dataset tests depend on
 data/*.csv
+!data/spamham.csv
 
 .env
 .vscode/

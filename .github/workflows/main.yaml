@@ -62,6 +62,7 @@ jobs:
 
       - name: Run container
         run: |
-          docker rm -f spam-detection 2>$null; $LASTEXITCODE = 0
+          $ErrorActionPreference = "Continue"
+          docker rm -f spam-detection *> $null
           docker run -d --name spam-detection -p 8080:8080 `
             ${{ secrets.DOCKERHUB_USERNAME }}/spam-detection:latest
